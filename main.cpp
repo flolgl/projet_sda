@@ -8,5 +8,6 @@ int main() {
 	getMots(liste);
 	unsigned int points = compter_points(liste);
 	std::cout << points;
+	supprimer(liste);
 	return 0;
 }
