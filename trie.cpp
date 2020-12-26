@@ -16,7 +16,7 @@ void trie(Liste_mot& liste) {
 			*/
 
 			if (strcmp(liste.Liste_Mot[i], liste.Liste_Mot[j]) > 0) {
-				std::cout << "result < 0 / " << liste.Liste_Mot[i] << " < " <<liste.Liste_Mot[j] << std::endl;
+				//std::cout << "result < 0 / " << liste.Liste_Mot[i] << " < " <<liste.Liste_Mot[j] << std::endl;
 				swap(liste, i, j);
 			}
 

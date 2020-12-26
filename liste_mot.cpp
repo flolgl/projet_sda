@@ -64,5 +64,5 @@ void afficher(Liste_mot& liste) {
 	for (unsigned int i = 0; i < liste.nb_mots; i++) {
 		std::cout << liste.Liste_Mot[i] << std::endl;
 	}
-	std::cout << "*";
+	std::cout << "*" << std::endl;
 }
