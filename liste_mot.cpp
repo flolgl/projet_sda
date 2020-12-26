@@ -1,9 +1,4 @@
-#pragma warning(disable : 4996)
-#include <iostream>
-#include <cstring>
-#include <iomanip>
-
-#include "CompteurPoints(1).h"
+#include "liste_mot.h"
 
 
 void getMots(Liste_mot& liste) {
@@ -34,6 +29,8 @@ void getMots(Liste_mot& liste) {
 	}
 }
 
+
+
 void ajouter_mot(Liste_mot& liste, Mot word) {
 
 	if  (liste.taille == liste.nb_mots){
@@ -51,37 +48,7 @@ void ajouter_mot(Liste_mot& liste, Mot word) {
 }
 
 
-bool mot_existant(Liste_mot& liste, Mot mot_a_verifier) {
-	for (int i = 0; i < liste.nb_mots; i++) {
-		if (strcmp(liste.Liste_Mot[i], mot_a_verifier) == 0) {
-			//std::cout << "Mot existant";
-			return true;
-		}
-	}
-	return false;
-}
 
-
-int compter_points(Liste_mot& liste){
-	int nb_points = 0;
-	size_t taille;
-	for (int i = 0; i < liste.nb_mots; i++) {
-		taille = strnlen(liste.Liste_Mot[i], LGMOT+1);
-		switch (taille){
-			case 0: break;
-			case 1: break;
-			case 2: break;
-			case 3: nb_points += 1; break;
-			case 4: nb_points += 1; break;
-			case 5: nb_points += 2; break;
-			case 6: nb_points += 3; break;
-			case 7: nb_points += 5; break;
-			default: nb_points += 11;
-		}
-	}
-
-	return nb_points;
-}
 
 void initialiser_liste_mot(Liste_mot& liste, unsigned int taille) {
 	liste.nb_mots = 0;
@@ -91,4 +58,11 @@ void initialiser_liste_mot(Liste_mot& liste, unsigned int taille) {
 
 void supprimer(Liste_mot& liste) {
 	delete[] liste.Liste_Mot;
+}
+
+void afficher(Liste_mot& liste) {
+	for (unsigned int i = 0; i < liste.nb_mots; i++) {
+		std::cout << liste.Liste_Mot[i] << std::endl;
+	}
+	std::cout << "*" << std::endl;
 }
