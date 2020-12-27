@@ -11,4 +11,5 @@ void test_presence(Liste_mot liste1, Liste_mot liste2) {
 			}
 		}
 	}
+	std::cout << "*" << std::endl;
 }
