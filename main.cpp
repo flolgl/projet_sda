@@ -11,7 +11,7 @@ void sprint1() {
 
 void sprint2() {
 	Liste_mot liste;
-	initialiser_liste_mot(liste, 50);
+	initialiser_liste_mot(liste, 3);
 	getMots_trie(liste);
 	trie(liste);
 	afficher(liste, true);
@@ -58,8 +58,8 @@ void sprint4() {
 void sprint5() {
 	Liste_de_listes_mot liste_principale;
 	Liste_mot liste_result;
-	initialiser_liste(liste_principale, 5);
-	initialiser_liste_mot(liste_result, 50);
+	initialiser_liste(liste_principale, 20);
+	initialiser_liste_mot(liste_result, 5);
 	get_listes(liste_principale);
 	check_communs_2_listes(liste_principale, liste_result);
 	trie(liste_result);
@@ -85,3 +85,4 @@ int main() {
 		sprint5(); break; // correspond au main du troisième programme
 	}
 }
+//(echo 5 & type in5.txt) | SDA_Projet.exe > out5

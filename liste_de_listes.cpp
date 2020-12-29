@@ -26,7 +26,7 @@ void ajouter_liste(Liste_de_listes_mot& liste_principale, Liste_mot& liste_to_ad
 
 void get_listes(Liste_de_listes_mot& liste_principale) {
 	Liste_mot liste_to_add;
-	initialiser_liste_mot(liste_to_add, 50);
+	initialiser_liste_mot(liste_to_add, 25);
 	bool continuer;
 
 	continuer = getMots_trie(liste_to_add);
@@ -35,7 +35,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 		ajouter_liste(liste_principale, liste_to_add);
 
 		//supprimer(liste_to_add);
-		initialiser_liste_mot(liste_to_add, 50);
+		initialiser_liste_mot(liste_to_add, 25);
 
 		continuer = getMots_trie(liste_to_add);
 	}
