@@ -15,8 +15,8 @@ struct Liste_mot {
 };
 
 
-void getMots(Liste_mot& liste);
+bool getMots(Liste_mot& liste);
 void ajouter_mot(Liste_mot& liste, Mot word);
 void initialiser_liste_mot(Liste_mot& liste, unsigned int taille);
 void supprimer(Liste_mot& liste);
-void afficher(Liste_mot& liste);
+void afficher(Liste_mot& liste, bool rtrligne);

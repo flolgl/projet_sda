@@ -1,15 +1,18 @@
 #include "liste_mot.h"
 
-
-void getMots(Liste_mot& liste) {
+/** 
+* @return true si liste est vide, false si au moins 1 mot
+*/
+bool getMots(Liste_mot& liste) {
 	//std::cout << "ici";
 	Mot word;
 	bool continuer = true;
 
 	std::cin >> word;
 
-	if (strcmp(word,"*") == 0)
-		continuer = false;
+	if (strcmp(word,"*") == 0){
+		return true;
+	}
 
 	while (continuer) {
 		//std::cout << " aussi ici";
@@ -27,6 +30,8 @@ void getMots(Liste_mot& liste) {
 		if (strcmp(word, "*") == 0)
 			continuer = false;
 	}
+	return false;
+
 }
 
 
@@ -34,7 +39,7 @@ void getMots(Liste_mot& liste) {
 void ajouter_mot(Liste_mot& liste, Mot word) {
 
 	if  (liste.taille == liste.nb_mots){
-		Mot* nouveau_liste_word = new Mot[liste.nb_mots*2];
+		Mot* nouveau_liste_word = new Mot[liste.taille*2];
 
 
 		for (unsigned int i = 0; i < liste.nb_mots; i++)
@@ -42,6 +47,7 @@ void ajouter_mot(Liste_mot& liste, Mot word) {
 
 		delete[] liste.Liste_Mot;
 		liste.Liste_Mot = nouveau_liste_word;
+		liste.taille = liste.taille * 2;
 	}
 	strcpy(liste.Liste_Mot[liste.nb_mots], word);
 	liste.nb_mots++;
@@ -60,9 +66,12 @@ void supprimer(Liste_mot& liste) {
 	delete[] liste.Liste_Mot;
 }
 
-void afficher(Liste_mot& liste) {
+void afficher(Liste_mot& liste, bool rtrligne) {
 	for (unsigned int i = 0; i < liste.nb_mots; i++) {
-		std::cout << liste.Liste_Mot[i] << std::endl;
+		if (strcmp(liste.Liste_Mot[i], "NULL") != 0)
+			std::cout << liste.Liste_Mot[i] << std::endl;
 	}
-	std::cout << "*" << std::endl;
+	std::cout << "*";
+	if (rtrligne)
+		std::cout << std::endl;
 }

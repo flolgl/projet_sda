@@ -31,7 +31,7 @@ void swap(Liste_mot& liste, unsigned int i, unsigned int j) {
 	strcpy(liste.Liste_Mot[j], tmp);
 }
 
-void getMots_trie(Liste_mot& liste) {
+bool getMots_trie(Liste_mot& liste) {
 	//std::cout << "ici";
 	Mot word;
 	bool continuer = true;
@@ -39,7 +39,7 @@ void getMots_trie(Liste_mot& liste) {
 	std::cin >> word;
 
 	if (strcmp(word, "*") == 0)
-		continuer = false;
+		return true;
 
 	while (continuer) {
 
@@ -51,6 +51,7 @@ void getMots_trie(Liste_mot& liste) {
 		if (strcmp(word, "*") == 0)
 			continuer = false;
 	}
+	return false;
 }
 
 
@@ -62,4 +63,14 @@ bool mot_existant(Liste_mot& liste, Mot mot_a_verifier) {
 		}
 	}
 	return false;
+}
+
+void rm_doublons(Liste_mot& liste) {
+	for (unsigned int i = 0; i < liste.nb_mots; i++) {
+		for (unsigned int j = i+1; j < liste.nb_mots; j++) {
+			if (strcmp(liste.Liste_Mot[i], liste.Liste_Mot[j]) == 0) {
+				strcpy(liste.Liste_Mot[j], "NULL");
+			}
+		}
+	}
 }

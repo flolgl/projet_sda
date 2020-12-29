@@ -14,7 +14,7 @@ void sprint2() {
 	initialiser_liste_mot(liste, 50);
 	getMots_trie(liste);
 	trie(liste);
-	afficher(liste);
+	afficher(liste, true);
 	supprimer(liste);
 }
 
@@ -49,7 +49,24 @@ void sprint4() {
 	getMots(liste2);
 
 	test_mots_communs(liste1, liste2, liste_result);
-	afficher(liste_result);
+	afficher(liste_result, true);
+	supprimer(liste1);
+	supprimer(liste2);
+	supprimer(liste_result);
+}
+
+void sprint5() {
+	Liste_de_listes_mot liste_principale;
+	Liste_mot liste_result;
+	initialiser_liste(liste_principale, 5);
+	initialiser_liste_mot(liste_result, 50);
+	get_listes(liste_principale);
+	check_communs_2_listes(liste_principale, liste_result);
+	trie(liste_result);
+	rm_doublons(liste_result);
+	afficher(liste_result, false);
+	supprimer(liste_result);
+	supprimer_liste_de_listes(liste_principale);
 }
 
 int main() {
@@ -63,6 +80,8 @@ int main() {
 	case 3:
 		sprint3(); break; // correspond au main du troisième programme	
 	case 4:
-		sprint4(); break; // correspond au main du troisième programme
+		sprint4(); break; // correspond au main du troisième programme	
+	case 5:
+		sprint5(); break; // correspond au main du troisième programme
 	}
 }
