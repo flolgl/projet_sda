@@ -37,6 +37,21 @@ void sprint3() {
 	supprimer(liste2);
 }
 
+void sprint4() {
+	Liste_mot liste1;
+	Liste_mot liste2;
+	Liste_mot liste_result;
+	initialiser_liste_mot(liste1, 50);
+	initialiser_liste_mot(liste2, 50);
+	initialiser_liste_mot(liste_result, 50);
+
+	getMots(liste1);
+	getMots(liste2);
+
+	test_mots_communs(liste1, liste2, liste_result);
+	afficher(liste_result);
+}
+
 int main() {
 	int num;
 	std::cin >> num;
@@ -46,6 +61,8 @@ int main() {
 	case 2:
 		sprint2(); break; // correspond au main du second programme
 	case 3:
-		sprint3(); break; // correspond au main du troisième programme
+		sprint3(); break; // correspond au main du troisième programme	
+	case 4:
+		sprint4(); break; // correspond au main du troisième programme
 	}
 }
