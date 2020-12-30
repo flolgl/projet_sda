@@ -122,3 +122,13 @@ bool verif_adjacence(plateau& plate, coords coord, coords coord_to_test) {
     if (-1 <= coord.x - coord_to_test.x <= 1 && -1 <= coord.y - coord_to_test.y <= 1)
         return true;
 }
+
+Liste_mot check_liste_dans_plateau(Liste_mot liste, plateau& plate) {
+    Liste_mot liste_result;
+    initialiser_liste_mot(liste_result, 25);
+    for (unsigned int i = 0; i < liste.nb_mots; i++) {
+        if (strcmp(liste.Liste_Mot[i], "NULL") != 0)
+            recherche(plate, liste.Liste_Mot[i]);
+    }
+
+}
