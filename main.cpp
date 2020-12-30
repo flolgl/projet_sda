@@ -19,20 +19,20 @@ void sprint2() {
 }
 
 void sprint3() {
-	// Déclaration des deux listes utilisées 
+	// Dï¿½claration des deux listes utilisï¿½es 
 	Liste_mot liste1;
 	Liste_mot liste2;
-	// Initialisation, déclaration et tri de la première liste
+	// Initialisation, dï¿½claration et tri de la premiï¿½re liste
 	initialiser_liste_mot(liste1, 50);
 	getMots_trie(liste1);
 	trie(liste1);
-	// Initialisation, déclaration et tri de la deuxième liste
+	// Initialisation, dï¿½claration et tri de la deuxiï¿½me liste
 	initialiser_liste_mot(liste2, 50);
 	getMots_trie(liste2);
 	trie(liste2);
-	// Affichage des mots de la deuxième liste qui ne sont pas présents dans la première
+	// Affichage des mots de la deuxiï¿½me liste qui ne sont pas prï¿½sents dans la premiï¿½re
 	test_presence(liste1, liste2);
-	// Libération des espaces mémoire des deux listes
+	// Libï¿½ration des espaces mï¿½moire des deux listes
 	supprimer(liste1);
 	supprimer(liste2);
 }
@@ -69,6 +69,10 @@ void sprint5() {
 	supprimer_liste_de_listes(liste_principale);
 }
 
+void sprint6(){
+	
+}
+
 int main() {
 	int num;
 	std::cin >> num;
@@ -78,11 +82,13 @@ int main() {
 	case 2:
 		sprint2(); break; // correspond au main du second programme
 	case 3:
-		sprint3(); break; // correspond au main du troisième programme	
+		sprint3(); break; // correspond au main du troisiï¿½me programme	
 	case 4:
-		sprint4(); break; // correspond au main du troisième programme	
+		sprint4(); break; // correspond au main du troisiï¿½me programme	
 	case 5:
-		sprint5(); break; // correspond au main du troisième programme
+		sprint5(); break; // correspond au main du troisiï¿½me programme
+	case 6:
+		sprint6(); break; // correspond au main du troisiï¿½me programme
 	}
 }
 //(echo 5 & type in5.txt) | SDA_Projet.exe > out5
