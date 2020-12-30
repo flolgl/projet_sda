@@ -30,6 +30,14 @@ void init_nil(plateau& plate) {
     }
 }
 
+void init_false(plateau& plate) {
+    for (unsigned int i = 0; i < plate.taille; i++) {
+        for (unsigned int j = 0; j < plate.taille; j++) {
+            plate.visiste[i][j] = false;
+        }
+    }
+}
+
 
 void get_plateau(plateau& plate) {
     std::string word;
@@ -69,4 +77,48 @@ void ajout_lignes_colonnes(plateau& plate){
     }
     supprimer_plateau(plate);
     plate = new_plate;
+}
+
+bool recherche(plateau& plate, Mot& word) {
+    coords coord;
+    for (coord.x = 0; coord.x < plate.taille; coord.x++) {
+        for (coord.y= 0; coord.y < plate.taille; coord.y++) {
+            plate.visiste[coord.x][coord.y] = false;
+            if (sous_recherche(word, 0, plate, coord))
+                return true;
+        }
+    }
+    return false;
+}
+
+bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
+    if (pos >= strlen(word))
+        return false;
+    if (coord.x >= plate.taille | coord.y >= plate.taille)
+        return false;
+    if (plate.lettre[coord.x][coord.y] != word[pos])
+        return false;
+    if (plate.visiste[coord.x][coord.y])
+        return false;
+    coords coord_test;
+    plate.visiste[coord.x][coord.y] = true;
+    for (coord_test.x = 0; coord_test.x < plate.taille; coord_test.x++) {
+        for (coord_test.y = 0; coord_test.y < plate.taille; coord_test.y++) {
+            if (verif_adjacence(plate, coord, coord_test)){
+                if (sous_recherche(word, pos+1, plate, coord_test)){
+                    return true;
+                }
+            }
+        }
+    }
+    plate.visiste[coord.x][coord.y] = false;
+    return false;
+
+}
+
+bool verif_adjacence(plateau& plate, coords coord, coords coord_to_test) {
+    if (coord_to_test.x < 0 | coord_to_test.y < 0 | coord_to_test.x >= plate.taille | coord_to_test.y >= plate.taille)
+        return false;
+    if (-1 <= coord.x - coord_to_test.x <= 1 && -1 <= coord.y - coord_to_test.y <= 1)
+        return true;
 }

@@ -10,3 +10,8 @@ struct plateau{
     bool** visiste;
     unsigned int taille;
 };
+
+struct coords {
+    unsigned int x;
+    unsigned int y;
+};
