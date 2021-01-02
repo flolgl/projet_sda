@@ -82,7 +82,7 @@ void sprint6(){
 	
 	initialiser_liste_mot(liste_result, 50);
 	check_liste_dans_plateau(liste, plate, liste_result);
-	afficher(liste_result, true);
+	afficher(liste_result, false);
 	supprimer(liste);
 	supprimer(liste_result);
 	supprimer_plateau(plate);
