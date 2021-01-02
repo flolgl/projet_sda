@@ -4,9 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <iomanip>
-
-const int LGMOT = 30;
-typedef char Mot[LGMOT + 1];
+#include "mot.h"
 
 struct Liste_mot {
 	Mot* Liste_Mot;

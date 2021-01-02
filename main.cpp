@@ -58,7 +58,7 @@ void sprint4() {
 void sprint5() {
 	Liste_de_listes_mot liste_principale;
 	Liste_mot liste_result;
-	initialiser_liste(liste_principale, 20);
+	initialiser_liste(liste_principale, 5);
 	initialiser_liste_mot(liste_result, 5);
 	get_listes(liste_principale);
 	check_communs_2_listes(liste_principale, liste_result);
@@ -70,7 +70,22 @@ void sprint5() {
 }
 
 void sprint6(){
+	Liste_mot liste;
+	Liste_mot liste_result;
+	plateau plate;
+	initialiser_plateau(plate, 2);
+	get_plateau(plate);
+
+	initialiser_liste_mot(liste, 50);
+	getMots_trie(liste);
+	trie(liste);	
 	
+	initialiser_liste_mot(liste_result, 50);
+	check_liste_dans_plateau(liste, plate, liste_result);
+	afficher(liste_result, true);
+	supprimer(liste);
+	supprimer(liste_result);
+	supprimer_plateau(plate);
 }
 
 int main() {

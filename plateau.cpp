@@ -1,5 +1,5 @@
 #include <string>
-#include "boggle.h"
+#include "plateau.h"
 
 void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
     plateau_a_init.lettre = new char*[taille];
@@ -30,34 +30,30 @@ void init_nil(plateau& plate) {
     }
 }
 
-void init_false(plateau& plate) {
-    for (unsigned int i = 0; i < plate.taille; i++) {
-        for (unsigned int j = 0; j < plate.taille; j++) {
-            plate.visiste[i][j] = false;
-        }
-    }
-}
-
-
 void get_plateau(plateau& plate) {
     std::string word;
+    std::skipws;
     std::getline(std::cin, word);
+    std::cout << word;  
     ajouter_ligne_plateau(plate, word);
 
 }
 
 void ajouter_ligne_plateau(plateau& plate, std::string& word) {
     unsigned int x = 0, y = 0;
-    if (plate.lettre[plate.taille][plate.taille] == ' '){
+    if (plate.lettre[plate.taille-1][plate.taille-1] == ' '){
         ajout_lignes_colonnes(plate);
     }
 
     for (unsigned int i = 0; i < word.length(); i++) {
-        if (x > plate.taille | y > plate.taille) {
+        if ((x > plate.taille-1) | (y > plate.taille-1)) {
             ajout_lignes_colonnes(plate);
         }
+        std::cout << word[i] << std::endl;
         if (word.compare(i, 1, " ") != 0) {
+            std::cout << "Ajout de la lettre: " << word[i] << " aux coords: x= " << x << " y= " << y << std::endl;
             plate.lettre[x][y] = word[i];
+            std::cout << "Vérification: " << plate.lettre[x][y] << std::endl;
             y += 1;
         }
         else {
@@ -94,9 +90,10 @@ bool recherche(plateau& plate, Mot& word) {
 bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
     if (pos >= strlen(word))
         return false;
-    if (coord.x >= plate.taille | coord.y >= plate.taille)
+    if ((coord.x >= plate.taille - 1) | (coord.y >= plate.taille - 1))
         return false;
     if (plate.lettre[coord.x][coord.y] != word[pos])
+        std::cout << plate.lettre[coord.x][coord.y] << " word: " << word[pos] << std::endl;
         return false;
     if (plate.visiste[coord.x][coord.y])
         return false;
@@ -117,18 +114,18 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
 }
 
 bool verif_adjacence(plateau& plate, coords coord, coords coord_to_test) {
-    if (coord_to_test.x < 0 | coord_to_test.y < 0 | coord_to_test.x >= plate.taille | coord_to_test.y >= plate.taille)
+    if ( (coord_to_test.x < 0) | (coord_to_test.y < 0) | (coord_to_test.x >= plate.taille-1) | (coord_to_test.y >= plate.taille-1))
         return false;
-    if (-1 <= coord.x - coord_to_test.x <= 1 && -1 <= coord.y - coord_to_test.y <= 1)
+    if ((-1 <= coord.x - coord_to_test.x <= 1) && (-1 <= coord.y - coord_to_test.y <= 1))
         return true;
 }
 
-Liste_mot check_liste_dans_plateau(Liste_mot liste, plateau& plate) {
-    Liste_mot liste_result;
-    initialiser_liste_mot(liste_result, 25);
+void check_liste_dans_plateau(Liste_mot& liste, plateau& plate, Liste_mot& liste_result) {
     for (unsigned int i = 0; i < liste.nb_mots; i++) {
-        if (strcmp(liste.Liste_Mot[i], "NULL") != 0)
-            recherche(plate, liste.Liste_Mot[i]);
+        if (strcmp(liste.Liste_Mot[i], "NULL") != 0) {
+            if (recherche(plate, liste.Liste_Mot[i])) {
+                ajouter_mot(liste_result, liste.Liste_Mot[i]);
+            }
+        }
     }
-
 }
