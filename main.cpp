@@ -28,7 +28,6 @@ void sprint3() {
 	initialiser_liste_mot(liste1, 50);
 	getMots_trie(liste1, tmp);
 	trie(liste1);
-	afficher(liste1, true);
 	// Initialisation, d�claration et tri de la deuxi�me liste
 	initialiser_liste_mot(liste2, 50);
 	getMots_trie(liste2, tmp);

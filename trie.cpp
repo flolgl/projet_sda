@@ -56,7 +56,7 @@ bool getMots_trie(Liste_mot& liste, Mot& tmp) {
 		if (word[0] == '*') {
 			continuer = false;
 			if (strlen(word) > 1) {
-				strcpy(word, strtok(word, "*"));
+				strcpy(tmp, strtok(word, "*"));
 			}
 		}
 	}
