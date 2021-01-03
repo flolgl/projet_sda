@@ -11,7 +11,7 @@ void sprint1() {
 
 void sprint2() {
 	Liste_mot liste;
-	Mot tmp;
+	Mot tmp = "null";
 	initialiser_liste_mot(liste, 3);
 	getMots_trie(liste, tmp);
 	trie(liste);
@@ -76,7 +76,7 @@ void sprint6(){
 	Liste_mot liste;
 	Liste_mot liste_result;
 	plateau plate;
-	Mot tmp;
+	Mot tmp = "null";
 	initialiser_plateau(plate, 2);
 	get_plateau(plate);
 
