@@ -29,7 +29,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 	initialiser_liste_mot(liste_to_add, 25);
 	bool continuer;
 
-	continuer = getMots_trie(liste_to_add);
+	continuer = getMots_trie(liste_to_add, tmp);
 
 	while (!continuer) {
 		ajouter_liste(liste_principale, liste_to_add);

@@ -11,8 +11,9 @@ void sprint1() {
 
 void sprint2() {
 	Liste_mot liste;
+	Mot tmp;
 	initialiser_liste_mot(liste, 3);
-	getMots_trie(liste);
+	getMots_trie(liste, tmp);
 	trie(liste);
 	afficher(liste, true);
 	supprimer(liste);
@@ -22,13 +23,15 @@ void sprint3() {
 	// D�claration des deux listes utilis�es 
 	Liste_mot liste1;
 	Liste_mot liste2;
+	Mot tmp = "null";
 	// Initialisation, d�claration et tri de la premi�re liste
 	initialiser_liste_mot(liste1, 50);
-	getMots_trie(liste1);
+	getMots_trie(liste1, tmp);
 	trie(liste1);
+	afficher(liste1, true);
 	// Initialisation, d�claration et tri de la deuxi�me liste
 	initialiser_liste_mot(liste2, 50);
-	getMots_trie(liste2);
+	getMots_trie(liste2, tmp);
 	trie(liste2);
 	// Affichage des mots de la deuxi�me liste qui ne sont pas pr�sents dans la premi�re
 	test_presence(liste1, liste2);
@@ -73,11 +76,12 @@ void sprint6(){
 	Liste_mot liste;
 	Liste_mot liste_result;
 	plateau plate;
+	Mot tmp;
 	initialiser_plateau(plate, 2);
 	get_plateau(plate);
 
 	initialiser_liste_mot(liste, 50);
-	getMots_trie(liste);
+	getMots_trie(liste, tmp);
 	trie(liste);	
 	
 	initialiser_liste_mot(liste_result, 50);

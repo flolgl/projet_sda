@@ -4,10 +4,10 @@
 void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
     //std::cout << "la taille est de: " << taille << std::endl;
     plateau_a_init.lettre = new char*[taille];
-    plateau_a_init.visiste = new bool*[taille];
+    plateau_a_init.visitee = new bool*[taille];
     for (unsigned int i=0; i<taille; i++){
         plateau_a_init.lettre[i] = new char[taille];
-        plateau_a_init.visiste[i] = new bool[taille];
+        plateau_a_init.visitee[i] = new bool[taille];
     }
     plateau_a_init.taille = taille;
     init_nil(plateau_a_init);
@@ -16,17 +16,17 @@ void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
 void supprimer_plateau(plateau& plateau_to_delete) {
     for (unsigned int i = 0; i < plateau_to_delete.taille; i++) {
         delete[] plateau_to_delete.lettre[i];
-        delete[] plateau_to_delete.visiste[i];
+        delete[] plateau_to_delete.visitee[i];
     }
     delete[] plateau_to_delete.lettre;
-    delete[] plateau_to_delete.visiste;
+    delete[] plateau_to_delete.visitee;
 }
 
 void init_nil(plateau& plate) {
     for (unsigned int i = 0; i < plate.taille; i++) {
         for (unsigned int j = 0; j < plate.taille; j++) {
             plate.lettre[i][j] = ' ';
-            plate.visiste[i][j] = false;
+            plate.visitee[i][j] = false;
         }
     }
 }
@@ -34,7 +34,7 @@ void init_nil(plateau& plate) {
 void init_false(plateau& plate) {
     for (unsigned int i = 0; i < plate.taille; i++) {
         for (unsigned int j = 0; j < plate.taille; j++) {
-            plate.visiste[i][j] = false;
+            plate.visitee[i][j] = false;
         }
     }
 }
@@ -112,11 +112,11 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
     if (plate.lettre[coord.x][coord.y] != word[pos])
         //std::cout << "false ligne 104, Mot: " << word << std::endl;
         return false;
-    if (plate.visiste[coord.x][coord.y])
+    if (plate.visitee[coord.x][coord.y])
         //std::cout << "false ligne 107, Mot: " << word << std::endl;
         return false;
     coords coord_test;
-    plate.visiste[coord.x][coord.y] = true;
+    plate.visitee[coord.x][coord.y] = true;
     for (coord_test.x = 0; coord_test.x < plate.taille; coord_test.x++) {
         for (coord_test.y = 0; coord_test.y < plate.taille; coord_test.y++) {
             if (verif_adjacence(plate, coord, coord_test)){
@@ -127,7 +127,7 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
             }
         }
     }
-    plate.visiste[coord.x][coord.y] = false;
+    plate.visitee[coord.x][coord.y] = false;
     return false;
 
 }

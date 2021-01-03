@@ -31,8 +31,12 @@ void swap(Liste_mot& liste, unsigned int i, unsigned int j) {
 	strcpy(liste.Liste_Mot[j], tmp);
 }
 
-bool getMots_trie(Liste_mot& liste) {
+bool getMots_trie(Liste_mot& liste, Mot& tmp) {
 	//std::cout << "ici";
+	if (strcmp(tmp, "null") != 0) {
+		ajouter_mot(liste, tmp);
+		strcpy(tmp, "null");
+	}
 	Mot word;
 	bool continuer = true;
 
@@ -48,8 +52,13 @@ bool getMots_trie(Liste_mot& liste) {
 		}
 
 		std::cin >> std::setw(LGMOT) >> word;
-		if (strcmp(word, "*") == 0)
+
+		if (word[0] == '*') {
 			continuer = false;
+			if (strlen(word) > 1) {
+				strcpy(word, strtok(word, "*"));
+			}
+		}
 	}
 	return false;
 }

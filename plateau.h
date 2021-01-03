@@ -3,7 +3,7 @@
 
 struct plateau {
     char** lettre;
-    bool** visiste;
+    bool** visitee;
     unsigned int taille;
 };
 
