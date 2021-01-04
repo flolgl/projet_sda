@@ -36,7 +36,7 @@ bool getMots(Liste_mot& liste) {
 
 
 
-void ajouter_mot(Liste_mot& liste, Mot word) {
+void ajouter_mot(Liste_mot& liste, Mot& word) {
 
 	if  (liste.taille == liste.nb_mots){
 		Mot* nouveau_liste_word = new Mot[liste.taille*2];

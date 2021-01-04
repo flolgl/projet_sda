@@ -72,21 +72,19 @@ void sprint5() {
 }
 
 void sprint6(){
-	Liste_mot liste;
 	Liste_mot liste_result;
 	plateau plate;
 	Mot tmp = "null";
+	initialiser_liste_mot(liste_result, 50);
 	initialiser_plateau(plate, 2);
 	get_plateau(plate);
 
-	initialiser_liste_mot(liste, 50);
-	getMots_trie(liste, tmp);
-	trie(liste);	
-	
-	initialiser_liste_mot(liste_result, 50);
-	check_liste_dans_plateau(liste, plate, liste_result);
+	getMots_plate(plate, liste_result);
+	//getMots_trie(liste, tmp);
+	//trie(liste);	
+	//check_liste_dans_plateau(liste, plate, liste_result);
+	trie(liste_result);
 	afficher(liste_result, false);
-	supprimer(liste);
 	supprimer(liste_result);
 	supprimer_plateau(plate);
 }

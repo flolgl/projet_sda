@@ -1,5 +1,6 @@
 #include <string>
 #include "plateau.h"
+#include "trie.h"
 
 void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
     //std::cout << "la taille est de: " << taille << std::endl;
@@ -99,7 +100,7 @@ bool recherche(plateau& plate, Mot& word) {
     return false;
 }
 
-bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
+bool sous_recherche(Mot& word, int pos, plateau& plate, coords& coord) {
     //std::cout << "Comparaison: "<< plate.lettre[coord.x][coord.y] << " et " << word[pos] << std::endl;
     //std::cout << "Coordonnees x: " << coord.x << " et y: " << coord.y << std::endl;
 
@@ -132,7 +133,7 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords coord) {
 
 }
 
-bool verif_adjacence(plateau& plate, coords coord, coords coord_to_test) {
+bool verif_adjacence(plateau& plate, coords& coord, coords& coord_to_test) {
     //if ( (coord_to_test.x < 0) | (coord_to_test.y < 0) | (coord_to_test.x >= plate.taille-1) | (coord_to_test.y >= plate.taille-1))
     //    return false;
     //if ((-1 <= coord.x - coord_to_test.x <= 1) && (-1 <= coord.y - coord_to_test.y <= 1))
@@ -170,4 +171,36 @@ void check_liste_dans_plateau(Liste_mot& liste, plateau& plate, Liste_mot& liste
             }
         }
     }
+}
+
+void check_mot_dans_plateau(Mot& mot, plateau& plate, Liste_mot& liste_result) {
+
+    if (mot_existant(liste_result, mot) == false) {
+        if (recherche(plate, mot)) {
+            //std::cout << "ajout mot: " << liste.Liste_Mot[i] << std::endl;
+            ajouter_mot(liste_result, mot);
+
+        }
+    }
+}
+
+void getMots_plate(plateau& plate, Liste_mot& liste_result) {
+    Mot word;
+    bool continuer = true;
+
+    std::cin >> word;
+
+    if (strcmp(word, "*") == 0)
+        continuer = false;
+
+    while (continuer) {
+
+        check_mot_dans_plateau(word, plate, liste_result);
+
+        std::cin >> std::setw(LGMOT) >> word;
+        if (strcmp(word, "*") == 0)
+            continuer = false;
+    }
+
+
 }
