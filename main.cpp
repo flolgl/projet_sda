@@ -1,3 +1,4 @@
+#include <fstream>
 #include "boggle.h"
 
 void sprint1() {
@@ -38,20 +39,90 @@ void sprint3() {
 	supprimer(liste1);
 	supprimer(liste2);
 }
+void getMots_compare(Liste_mot& liste_result);
+void get_liste_to_file();
+bool check_file_word_commun(Mot& word);
 
 void sprint4() {
-	Liste_mot liste1;
-	Liste_mot liste2;
-	initialiser_liste_mot(liste1, 20);
-	initialiser_liste_mot(liste2, 20);
+	//Liste_mot liste1;
+	Liste_mot liste_result;
+	//initialiser_liste_mot(liste1, 25);
 
-	getMots(liste1);
-	getMots(liste2);
 
-	test_mots_communs_cout(liste1, liste2);
-	supprimer(liste1);
-	supprimer(liste2);
+	//std::cout << "get_liste_to_file" << std::endl;
+	get_liste_to_file();
+	//std::cout << "initialiser_liste_mot" << std::endl;
+	initialiser_liste_mot(liste_result, 20);
+
+	//getMots(liste1);
+	getMots_compare(liste_result);
+
+	//test_mots_communs_cout(liste1, liste2);
+	//supprimer(liste1);
+	trie(liste_result);
+	afficher(liste_result, true);
+	supprimer(liste_result);
 }
+
+
+void get_liste_to_file() {
+	std::ofstream file("tmp_boggle.txt");
+	Mot word;
+
+	bool continuer = true;
+
+	std::cin >> std::setw(LGMOT) >> word;
+
+	if (strcmp(word, "*") == 0)
+		continuer = false;
+
+	while (continuer) {
+		
+		file << word << std::endl;
+
+		std::cin >> std::setw(LGMOT) >> word;
+		if (strcmp(word, "*") == 0)
+			continuer = false;
+	}
+	file.close();
+}
+
+void getMots_compare(Liste_mot& liste_result) {
+
+
+	Mot word;
+	bool continuer = true;
+
+	std::cin >> std::setw(LGMOT) >> word;
+
+	if (strcmp(word, "*") == 0)
+		continuer = false;
+
+	while (continuer) {
+
+		if (check_file_word_commun(word))
+			if (!mot_existant(liste_result, word))
+				ajouter_mot(liste_result, word);
+
+		std::cin >> std::setw(LGMOT) >> word;
+		if (strcmp(word, "*") == 0)
+			continuer = false;
+	}
+}
+
+bool check_file_word_commun(Mot& word) {
+	Mot mot;
+	std::ifstream file("tmp_boggle.txt");
+	file >> mot;
+	while (!file.eof()) {
+		if (strcmp(mot, word) == 0)
+			return true;
+		file >> mot;
+	}
+	file.close();
+	return false;
+}
+
 
 void sprint5() {
 	Liste_de_listes_mot liste_principale;

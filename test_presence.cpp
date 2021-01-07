@@ -36,3 +36,13 @@ void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2) {
 	}
 	std::cout << "*" << std::endl;
 }
+
+bool check_word_commun(Liste_mot& liste1, Mot& word) {
+	for (unsigned int i = 0; i < liste1.nb_mots; i++) {
+		if (strcmp(liste1.Liste_Mot[i], word) == 0) {
+			//std::cout << "les mots: " << liste1.Liste_Mot[i] << " " << word << std::endl;
+			return true;
+		}
+	}
+	return false;
+}
