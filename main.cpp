@@ -42,19 +42,15 @@ void sprint3() {
 void sprint4() {
 	Liste_mot liste1;
 	Liste_mot liste2;
-	Liste_mot liste_result;
 	initialiser_liste_mot(liste1, 20);
 	initialiser_liste_mot(liste2, 20);
-	initialiser_liste_mot(liste_result, 20);
 
 	getMots(liste1);
 	getMots(liste2);
 
-	test_mots_communs(liste1, liste2);
-	afficher(liste_result, true);
+	test_mots_communs_cout(liste1, liste2);
 	supprimer(liste1);
 	supprimer(liste2);
-	supprimer(liste_result);
 }
 
 void sprint5() {
