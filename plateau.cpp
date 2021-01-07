@@ -107,7 +107,7 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords& coord) {
     if (pos >= strlen(word))
         //std::cout << "true ligne 98, Mot: " << word << std::endl;
         return true;
-    if ((coord.x > plate.taille - 1) | (coord.y > plate.taille - 1))
+    if (!verif_limite(coord))
         //std::cout << "false ligne 101, Mot: " << word << std::endl;
         return false;
     if (plate.lettre[coord.x][coord.y] != word[pos])
@@ -203,4 +203,26 @@ void getMots_plate(plateau& plate, Liste_mot& liste_result) {
     }
 
 
+}
+
+bool verif_limite(coords& coord) {
+    bool tailleX = false, tailleY = false;
+    switch (coord.x) {
+    case 0:
+    case 1:
+    case 2:
+    case 3: tailleX = true; break;
+    }
+
+    switch (coord.y) {
+    case 0:
+    case 1:
+    case 2:
+    case 3: tailleY = true; break;
+    }
+
+    if (tailleX && tailleY) {
+        return true;
+    }
+    return false;
 }

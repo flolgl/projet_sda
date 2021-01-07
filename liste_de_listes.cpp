@@ -10,7 +10,7 @@ void initialiser_liste(Liste_de_listes_mot& liste, unsigned int taille) {
 
 void ajouter_liste(Liste_de_listes_mot& liste_principale, Liste_mot& liste_to_add) {
 	if (liste_principale.taille == liste_principale.nb_listes) {
-		Liste_mot* new_liste = new Liste_mot[liste_principale.taille * 2];
+		Liste_mot* new_liste = new Liste_mot[liste_principale.taille + 3];
 
 
 		for (unsigned int i = 0; i < liste_principale.nb_listes; i++)
@@ -18,7 +18,7 @@ void ajouter_liste(Liste_de_listes_mot& liste_principale, Liste_mot& liste_to_ad
 
 		delete[] liste_principale.Liste_de_listes;
 		liste_principale.Liste_de_listes = new_liste;
-		liste_principale.taille = liste_principale.taille * 2;
+		liste_principale.taille = liste_principale.taille + 3;
 	}
 	liste_principale.Liste_de_listes[liste_principale.nb_listes] = liste_to_add;
 	liste_principale.nb_listes += 1;

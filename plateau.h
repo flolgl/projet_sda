@@ -24,3 +24,4 @@ bool verif_adjacence(plateau& plate, coords& coord, coords& coord_to_test);
 void check_liste_dans_plateau(Liste_mot& liste, plateau& plate, Liste_mot& liste_result);
 void getMots_plate(plateau& plate, Liste_mot& liste_result);
 void check_mot_dans_plateau(Mot& mot, plateau& plate, Liste_mot& liste_result);
+bool verif_limite(coords& coord);
