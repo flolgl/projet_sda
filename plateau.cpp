@@ -120,7 +120,7 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords& coord) {
     plate.visitee[coord.x][coord.y] = true;
     for (coord_test.x = 0; coord_test.x < plate.taille; coord_test.x++) {
         for (coord_test.y = 0; coord_test.y < plate.taille; coord_test.y++) {
-            if (verif_adjacence(plate, coord, coord_test)){
+            if (verif_adjacence(coord, coord_test)){
                 if (sous_recherche(word, pos+1, plate, coord_test)){
                     //std::cout << "c aussi true" << std::endl;
                     return true;
