@@ -1,6 +1,4 @@
 #include "liste_de_listes.h"
-#include "test_presence.h"
-#include "trie.h"
 
 void initialiser_liste(Liste_de_listes_mot& liste, unsigned int taille) {
 	liste.Liste_de_listes = new Liste_mot[taille];
@@ -30,7 +28,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 	initialiser_liste_mot(liste_to_add, 25);
 	bool continuer;
 
-	continuer = getMots_trie(liste_to_add, tmp);
+	continuer = getMots(liste_to_add, tmp, true);
 
 	while (!continuer) {
 		ajouter_liste(liste_principale, liste_to_add);
@@ -38,7 +36,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 		//supprimer(liste_to_add);
 		initialiser_liste_mot(liste_to_add, 25);
 
-		continuer = getMots_trie(liste_to_add, tmp);
+		continuer = getMots(liste_to_add, tmp, false);
 	}
 }
 

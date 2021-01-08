@@ -1,38 +1,5 @@
-#include <string>
 #include "plateau.h"
-#include "trie.h"
 
-/*
-void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
-    //std::cout << "la taille est de: " << taille << std::endl;
-    plateau_a_init.lettre = new char*[taille];
-    plateau_a_init.visitee = new bool*[taille];
-    for (unsigned int i=0; i<taille; i++){
-        plateau_a_init.lettre[i] = new char[taille];
-        plateau_a_init.visitee[i] = new bool[taille];
-    }
-    plateau_a_init.taille = taille;
-    init_nil(plateau_a_init);
-}
-
-void supprimer_plateau(plateau& plateau_to_delete) {
-    for (unsigned int i = 0; i < plateau_to_delete.taille; i++) {
-        delete[] plateau_to_delete.lettre[i];
-        delete[] plateau_to_delete.visitee[i];
-    }
-    delete[] plateau_to_delete.lettre;
-    delete[] plateau_to_delete.visitee;
-}
-
-void init_nil(plateau& plate) {
-    for (unsigned int i = 0; i < plate.taille; i++) {
-        for (unsigned int j = 0; j < plate.taille; j++) {
-            plate.lettre[i][j] = ' ';
-            plate.visitee[i][j] = false;
-        }
-    }
-}
-*/
 void init_false(plateau& plate) {
     for (unsigned int i = 0; i < plate.taille; i++) {
         for (unsigned int j = 0; j < plate.taille; j++) {
@@ -42,18 +9,12 @@ void init_false(plateau& plate) {
 }
 
 void get_plateau(plateau& plate) {
-  /*std::string word;
-    std::cin >> std::ws;
-    std::getline(std::cin, word);
-    //std::cout << "la ligne: " << word << std::endl;  
-    ajouter_ligne_plateau(plate, word);*/
     char lettre;
     coords coord = { 0,0 };
 
     while (coord.x <= 3 && coord.y <= 3) {
         std::cin >> lettre;
 
-        //std::cout << lettre << " aux coords: " << coord.y << coord.x << std::endl;
         plate.lettre[coord.y][coord.x] = lettre;
         plate.visitee[coord.y][coord.x] = false;
         coord.x += 1;
@@ -64,46 +25,8 @@ void get_plateau(plateau& plate) {
 
     }
     plate.taille = 4;
-
-
-}
-/*
-void ajouter_ligne_plateau(plateau& plate, std::string& word) {
-    unsigned int x = 0, y = 0;
-
-    for (unsigned int i = 0; i < word.length(); i++) {
-        //std::cout << word[i] << std::endl;
-        if (word.compare(i, 1, " ") != 0) {
-
-            if (y > plate.taille-1)
-                ajout_lignes_colonnes(plate);
-
-            //std::cout << "Ajout de la lettre: " << word[i] << " aux coords: x= " << x << " y= " << y << std::endl;
-            plate.lettre[x][y] = word[i];
-            //std::cout << "Verification: " << plate.lettre[x][y] << std::endl;
-            y += 1;
-        }
-        else {
-            if (x > plate.taille - 1)
-                ajout_lignes_colonnes(plate);
-            x += 1;
-            y = 0;
-        }
-    }
 }
 
-void ajout_lignes_colonnes(plateau& plate){
-    plateau new_plate;
-    initialiser_plateau(new_plate, plate.taille + 1);
-    for (unsigned int i = 0; i < plate.taille; i++) {
-        for (unsigned int j = 0; j < plate.taille; j++) {
-            new_plate.lettre[i][j] = plate.lettre[i][j];
-        }
-    }
-    supprimer_plateau(plate);
-    plate = new_plate;
-}
-*/
 bool recherche(plateau& plate, Mot& word) {
     coords coord;
     //std::cout << std::endl << std::endl << "Taille: " <<plate.taille << std::endl << std::endl;
@@ -119,7 +42,7 @@ bool recherche(plateau& plate, Mot& word) {
     return false;
 }
 
-bool sous_recherche(Mot& word, int pos, plateau& plate, coords& coord) {
+bool sous_recherche(Mot& word, unsigned int pos, plateau& plate, coords& coord) {
     //std::cout << "Comparaison: "<< plate.lettre[coord.x][coord.y] << " et " << word[pos] << std::endl;
     //std::cout << "Coordonnees x: " << coord.x << " et y: " << coord.y << std::endl;
 
@@ -194,13 +117,13 @@ void check_liste_dans_plateau(Liste_mot& liste, plateau& plate, Liste_mot& liste
 
 void check_mot_dans_plateau(Mot& mot, plateau& plate, Liste_mot& liste_result) {
 
-    if (mot_existant(liste_result, mot) == false) {
+    //if (mot_existant(liste_result, mot) == false) {
         if (recherche(plate, mot)) {
             //std::cout << "ajout mot: " << liste.Liste_Mot[i] << std::endl;
             ajouter_mot(liste_result, mot);
 
         }
-    }
+    //}
 }
 
 void getMots_plate(plateau& plate, Liste_mot& liste_result) {

@@ -4,10 +4,11 @@
 void sprint1() {
 	// Déclaration de la liste
 	Liste_mot liste;
+	Mot tmp = "null";
 	// Initialisation en mémoire de la liste
 	initialiser_liste_mot(liste, 50);
 	// Enregistrement dans la liste des mots entrés
-	getMots(liste);
+	getMots(liste, tmp, false);
 	// Comptage et affichage des points de la liste
 	unsigned int points = compter_points(liste);
 	std::cout << points;
@@ -25,9 +26,9 @@ void sprint2() {
 	// Initialisation en mémoire de la liste
 	initialiser_liste_mot(liste, 3);
 	// Enregistrement dans la liste des mots entrés en enlevant les doublons
-	getMots_trie(liste, tmp);
+	getMots(liste, tmp, false);
 	// Tri de la liste
-	trie(liste);
+	trie_n(liste, true, true);
 	// Affichage des éléments de a liste
 	afficher(liste, true);
 	// Libération de la mémoire et suppression de la liste
@@ -44,12 +45,12 @@ void sprint3() {
 	Mot tmp = "null";
 	// Initialisation, d�claration et tri de la premi�re liste
 	initialiser_liste_mot(liste1, 50);
-	getMots_trie(liste1, tmp);
-	trie(liste1);
+	getMots(liste1, tmp, false);
+	trie_n(liste1, true, true);
 	// Initialisation, d�claration et tri de la deuxi�me liste
 	initialiser_liste_mot(liste2, 50);
-	getMots_trie(liste2, tmp);
-	trie(liste2);
+	getMots(liste2, tmp, false);
+	trie_n(liste2, true, true);
 	// Affichage des mots de la deuxi�me liste qui ne sont pas pr�sents dans la premi�re
 	test_presence(liste1, liste2);
 	// Lib�ration des espaces m�moire des deux listes
@@ -62,14 +63,17 @@ void sprint4() {
 	// Initialisation et allocation mémoire des listes
 	Liste_mot liste1;
 	Liste_mot liste_result;
+	Mot tmp = "null";
 	initialiser_liste_mot(liste1, 20);
 	initialiser_liste_mot(liste_result, 20);
 	// Enregistrement dans la liste1 des mots entrés
-	getMots(liste1);
+	getMots(liste1, tmp, false);
 	// Vérifie si les mots entrés sont en commun avec la lste1, si oui, enregistrement dans liste_result
 	test_mots_communs_cout(liste1, liste_result);
 	// Tri de la liste des mots en commun
-	trie(liste_result);
+	//trie(liste_result);
+	trie_n(liste_result, true, true);
+
 	// Affichage des mots de la liste des mots en commun.
 	afficher(liste_result, true);
 	// Suppression et libération de la mémoire des listes de mots
@@ -91,8 +95,10 @@ void sprint5() {
 	// Vérification des mots en commun dans les listes
 	check_communs_2_listes(liste_principale, liste_result);
 	// Tri et suppression des doublons de la liste des mots en commun
-	trie(liste_result);
-	rm_doublons(liste_result);
+	//trie(liste_result);
+	//rm_doublons(liste_result);
+	trie_n(liste_result, true, true);
+
 	// Affichage des mots de la liste contenant les mots en commun des autres listes
 	afficher(liste_result, false);
 	// Suppression et désallocation en mémore des listes
@@ -115,7 +121,7 @@ void sprint6(){
 	// Enregistrement de tous les mots trouvables dans le plateau dans la liste résultat
 	getMots_plate(plate, liste_result);
 	// Tri et affichage de la liste résultat
-	trie(liste_result);
+	trie_n(liste_result, true, true);
 	afficher(liste_result, false);
 	// Suppression et désallocation mémoire des listes
 	supprimer(liste_result);
