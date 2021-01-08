@@ -3,6 +3,13 @@ Release/
 *.vcxproj
 *.filters
 *.user
+*.obj
+*.log
+*.recipe
+*.pdb
+*.lastbuildstate
+*.tlog
+*.txt
 
 *.vcxproj.filters
 *.vcxproj.user
