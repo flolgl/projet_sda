@@ -1,6 +1,6 @@
 #include "liste_mot.h"
 
-bool getMots(Liste_mot& liste, Mot& tmp, bool tri) {
+bool getMots(Liste_mot& liste, Mot& tmp) {
 
 	if (strcmp(tmp, "null") != 0) {
 		ajouter_mot(liste, tmp);
@@ -15,16 +15,8 @@ bool getMots(Liste_mot& liste, Mot& tmp, bool tri) {
 		return true;
 
 	while (continuer) {
-
-		if (tri){
-			if (mot_existant(liste, word) == false) {
-				ajouter_mot(liste, word);
-			}
-		}
-		else {
-			ajouter_mot(liste, word);
-		}
-
+		ajouter_mot(liste, word);
+		
 		std::cin >> std::setw(LGMOT) >> word;
 
 		if (word[0] == '*') {
@@ -149,10 +141,8 @@ void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste_result) {
 			}
 
 			if (strcmp(word, liste1.Liste_Mot[j]) == 0) {
-				//if (!mot_existant(liste_result, word)) {
-					ajouter_mot(liste_result, word);
-					break;
-				//}
+				ajouter_mot(liste_result, word);
+				break;	
 			}
 		}
 
@@ -185,29 +175,6 @@ void trie_n(Liste_mot& liste, bool doublon, bool ordre) {
 	}
 }
 
-void trie(Liste_mot& liste) {
-	for (unsigned int i = 0; i < liste.nb_mots; i++) {
-
-		if (strcmp(liste.Liste_Mot[i], "*") == 0) {
-			break;
-		}
-
-		for (unsigned int j = i + 1; j < liste.nb_mots; j++) {
-
-			/* //Jme fais chier pour rien...
-			if (strcmp(liste.Liste_Mot[i], liste.Liste_Mot[j]) == 0) {
-				strcpy(liste.Liste_Mot[j], "NULL");
-			}
-			*/
-
-			if (strcmp(liste.Liste_Mot[i], liste.Liste_Mot[j]) > 0) {
-				//std::cout << "result < 0 / " << liste.Liste_Mot[i] << " < " <<liste.Liste_Mot[j] << std::endl;
-				swap(liste, i, j);
-			}
-
-		}
-	}
-}
 
 void rm_doublons(Liste_mot& liste) {
 	for (unsigned int i = 0; i < liste.nb_mots; i++) {

@@ -28,7 +28,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 	initialiser_liste_mot(liste_to_add, 25);
 	bool continuer;
 
-	continuer = getMots(liste_to_add, tmp, true);
+	continuer = getMots(liste_to_add, tmp);
 
 	while (!continuer) {
 		ajouter_liste(liste_principale, liste_to_add);
@@ -36,7 +36,7 @@ void get_listes(Liste_de_listes_mot& liste_principale) {
 		//supprimer(liste_to_add);
 		initialiser_liste_mot(liste_to_add, 25);
 
-		continuer = getMots(liste_to_add, tmp, false);
+		continuer = getMots(liste_to_add, tmp);
 	}
 }
 

@@ -8,7 +8,7 @@ void sprint1() {
 	// Initialisation en mémoire de la liste
 	initialiser_liste_mot(liste, 50);
 	// Enregistrement dans la liste des mots entrés
-	getMots(liste, tmp, false);
+	getMots(liste, tmp);
 	// Comptage et affichage des points de la liste
 	unsigned int points = compter_points(liste);
 	std::cout << points;
@@ -26,7 +26,7 @@ void sprint2() {
 	// Initialisation en mémoire de la liste
 	initialiser_liste_mot(liste, 3);
 	// Enregistrement dans la liste des mots entrés en enlevant les doublons
-	getMots(liste, tmp, false);
+	getMots(liste, tmp);
 	// Tri de la liste
 	trie_n(liste, true, true);
 	// Affichage des éléments de a liste
@@ -45,11 +45,11 @@ void sprint3() {
 	Mot tmp = "null";
 	// Initialisation, d�claration et tri de la premi�re liste
 	initialiser_liste_mot(liste1, 50);
-	getMots(liste1, tmp, false);
+	getMots(liste1, tmp);
 	trie_n(liste1, true, true);
 	// Initialisation, d�claration et tri de la deuxi�me liste
 	initialiser_liste_mot(liste2, 50);
-	getMots(liste2, tmp, false);
+	getMots(liste2, tmp);
 	trie_n(liste2, true, true);
 	// Affichage des mots de la deuxi�me liste qui ne sont pas pr�sents dans la premi�re
 	test_presence(liste1, liste2);
@@ -67,11 +67,10 @@ void sprint4() {
 	initialiser_liste_mot(liste1, 20);
 	initialiser_liste_mot(liste_result, 20);
 	// Enregistrement dans la liste1 des mots entrés
-	getMots(liste1, tmp, false);
+	getMots(liste1, tmp);
 	// Vérifie si les mots entrés sont en commun avec la lste1, si oui, enregistrement dans liste_result
 	test_mots_communs_cout(liste1, liste_result);
 	// Tri de la liste des mots en commun
-	//trie(liste_result);
 	trie_n(liste_result, true, true);
 
 	// Affichage des mots de la liste des mots en commun.
@@ -95,8 +94,6 @@ void sprint5() {
 	// Vérification des mots en commun dans les listes
 	check_communs_2_listes(liste_principale, liste_result);
 	// Tri et suppression des doublons de la liste des mots en commun
-	//trie(liste_result);
-	//rm_doublons(liste_result);
 	trie_n(liste_result, true, true);
 
 	// Affichage des mots de la liste contenant les mots en commun des autres listes

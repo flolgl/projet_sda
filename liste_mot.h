@@ -20,7 +20,7 @@ struct Liste_mot {
 * @param[out] tmp : mot temporaire contenant le premier mot d'une liste suivante si il n'y avait pas de retour à la ligne après '*'.
 * @param[out] liste : liste actualisée avec les mots rentrés.
 */
-bool getMots(Liste_mot& liste, Mot& tmp, bool tri);
+bool getMots(Liste_mot& liste, Mot& tmp);
 
 /**
 * @brief : Vérifie si un mot existe déjà dans une liste.
@@ -100,16 +100,6 @@ void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2);
 void trie_n(Liste_mot& liste, bool doublon, bool ordre);
 
 /** 
-* @brief : Tri dans l'ordre lexicographique des mots d'une liste.
-* @param[in] liste : liste à trier.
-* @param[out] liste : liste triée.
-* @param[in] doublon : remplace les doublons par "NULL" si true.
-* @param[in] ordre : met la liste dans l'ordre si true.
-* @pre ordre ou doublon true.
-*/
-void trie(Liste_mot& liste);
-
-/** 
 * @brief échange la position de deux éléments dans une liste de mots.
 * @param[in] liste : liste dans alquelle les éléments doivent être échangés.
 * @param[in] i : position du premier élément dans la liste.
@@ -117,10 +107,3 @@ void trie(Liste_mot& liste);
 * @param[out] liste : liste avec les deux éléments échangés.
 */
 void swap(Liste_mot& liste, unsigned int i, unsigned int j);
-
-/** 
-* @brief : Supprime les doublons d'une liste.
-* @param[in] liste : liste dans laquelle les doublons seront supprimés.
-* @param[out] liste : liste sans doublons.
-*/
-void rm_doublons(Liste_mot& liste);

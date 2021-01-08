@@ -117,13 +117,10 @@ void check_liste_dans_plateau(Liste_mot& liste, plateau& plate, Liste_mot& liste
 
 void check_mot_dans_plateau(Mot& mot, plateau& plate, Liste_mot& liste_result) {
 
-    //if (mot_existant(liste_result, mot) == false) {
-        if (recherche(plate, mot)) {
-            //std::cout << "ajout mot: " << liste.Liste_Mot[i] << std::endl;
-            ajouter_mot(liste_result, mot);
+    if (recherche(plate, mot)) {
+        ajouter_mot(liste_result, mot);
 
-        }
-    //}
+    }
 }
 
 void getMots_plate(plateau& plate, Liste_mot& liste_result) {
