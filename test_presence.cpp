@@ -25,21 +25,21 @@ void test_mots_communs(Liste_mot& liste1, Liste_mot& liste2, Liste_mot& liste_re
 	}
 }
 
-//void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2) {
-//	for (unsigned int i = 0; i < liste1.nb_mots; i++) {
-//		for (unsigned int j = 0; j < liste2.nb_mots; j++) {
-//			if (liste1.Liste_Mot[i][0] > liste2.Liste_Mot[j][0])
-//				break;
-//			if (strcmp(liste1.Liste_Mot[i], liste2.Liste_Mot[j]) == 0) {
-//				std::cout << liste1.Liste_Mot[i] << std::endl;
-//				break;
-//			}
-//		}
-//	}
-//	std::cout << "*" << std::endl;
-//}
+void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2) {
+	for (unsigned int i = 0; i < liste1.nb_mots; i++) {
+		for (unsigned int j = 0; j < liste2.nb_mots; j++) {
+			if (liste1.Liste_Mot[i][0] > liste2.Liste_Mot[j][0])
+				break;
+			if (strcmp(liste1.Liste_Mot[i], liste2.Liste_Mot[j]) == 0) {
+				std::cout << liste1.Liste_Mot[i] << std::endl;
+				break;
+			}
+		}
+	}
+	std::cout << "*" << std::endl;
+}
 
-void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste_result) {
+/* void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste_result) {
 	Mot word;
 	bool continuer = true;
 
@@ -71,4 +71,4 @@ void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste_result) {
 		if (strcmp(word, "*") == 0)
 			continuer = false;
 	}
-}
+}*/
