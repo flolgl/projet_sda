@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : liste_mot.cpp
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #include "liste_mot.h"
 
 bool getMots(Liste_mot& liste, Mot& tmp) {

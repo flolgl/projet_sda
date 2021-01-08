@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : plateau.cpp
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #include "plateau.h"
 
 void init_false(plateau& plate) {

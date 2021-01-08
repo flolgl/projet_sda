@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : liste_de_listes.cpp
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #include "liste_de_listes.h"
 
 void initialiser_liste(Liste_de_listes_mot& liste, unsigned int taille) {

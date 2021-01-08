@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : liste_de_listes.h
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #pragma once
 
 #include "liste_mot.h"

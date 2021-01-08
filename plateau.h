@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : plateau.h
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #pragma once
 #include "liste_mot.h"
 
@@ -33,7 +38,7 @@ void get_plateau(plateau& plate);
 bool recherche(plateau& plate, Mot& word);
 
 /** 
-* @brief : sous-instance de la fonction de recherche d'un mot dans un plateau.
+* @brief Sous-instance de la fonction de recherche d'un mot dans un plateau.
 * Vérifie pour une coordonée donnée et une lettre d'un mot donné si il sera possible
 * de le construire en passant par les coordonnées données.
 * Recherche à partir de coordonnées précises.
@@ -42,7 +47,7 @@ bool recherche(plateau& plate, Mot& word);
 * @param[in] pos : position de la lettre du mot sur laquelle on se trouve.
 * @param[in] plate : plateau dans lequel on effectue les recherches.
 * @param[in] coord : coordonnées pour lesquelles la recherche est effectuée.
-* @return : état du résultat de la recherche. Vrai si trouvé, faux sinon.
+* @return Etat du résultat de la recherche. Vrai si trouvé, faux sinon.
 */
 bool sous_recherche(Mot& word, unsigned int pos, plateau& plate, coords& coord);
 
@@ -53,7 +58,8 @@ bool sous_recherche(Mot& word, unsigned int pos, plateau& plate, coords& coord);
 */
 bool verif_adjacence(coords& coord, coords& coord_to_test);
 
-/** @brief Vérifie si les mots d'une liste sont dans un plateau
+/** 
+* @brief Vérifie si les mots d'une liste sont dans un plateau
 * @param[in] liste : liste pour laquelle on effectue la recherche
 * @param[in] plate : plateau dans lequel on effectue la recherche
 * @param[out] liste_result : liste dans laquelle les mots présents dans le plateau seront enregistrés
@@ -80,6 +86,6 @@ void check_mot_dans_plateau(Mot& mot, plateau& plate, Liste_mot& liste_result);
 /** 
 * @brief Vérifie si les coordonnées sont plaçable dans les plateaux de Boggle.
 * @param[in] coord : coordonnées à tester.
-* @return : résultat du test. Vrai si validé, faux sinon.
+* @return Résultat du test. Vrai si validé, faux sinon.
 */
 bool verif_limite(coords& coord);

@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : main.cpp
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #include "boggle.h"
 
 // Main du premier sprint.

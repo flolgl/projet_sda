@@ -1,3 +1,8 @@
+/*******************************************************
+Nom ......... : liste_mot.h
+Auteurs ..... : Florian LE GAL & Raphaël BOUCHEZ
+Version ..... : 1.Release
+********************************************************/
 #pragma once
 #pragma warning(disable : 4996)
 
@@ -47,35 +52,35 @@ void ajouter_mot(Liste_mot& liste, Mot& word);
 void initialiser_liste_mot(Liste_mot& liste, unsigned int taille);
 
 /** 
-* @brief : Libération de la mémoire allouée à une liste.
+* @brief Libération de la mémoire allouée à une liste.
 * @param[in] liste : liste dont la mémoire doit être libérée.
 * @param[out] liste : liste désallouée en mémoire.
 */
 void supprimer(Liste_mot& liste);
 
 /** 
-* @brief : Affichage en retour des mots d'une liste de mots.
+* @brief Affichage en retour des mots d'une liste de mots.
 * @param[in] liste : liste dont les éléments doivent être affichés.
 * @param[in]trtligne : besoin de retour à la ligne ou non après l'affichage complet.
 */
 void afficher(Liste_mot& liste, bool rtrligne);
 
 /**
-* @brief : Compte les points d'une liste de mots selon les règles du Boggle.
+* @brief Compte les points d'une liste de mots selon les règles du Boggle.
 * @param[in] liste : liste dont les points sont comptés.
 */
 int compter_points(Liste_mot& liste);
 
 
 /** 
-* @brief : Affiche les mots de la deuxième liste qui ne sont pas présents dans la première.
+* @brief Affiche les mots de la deuxième liste qui ne sont pas présents dans la première.
 * @param[in] liste1 : première liste du test.
 * @param[in] liste2 : seconde liste du test.
 */
 void test_presence(Liste_mot& liste1, Liste_mot& liste2);
 
 /** 
-* @brief : Enregistre les mots en commun de deux listes.
+* @brief Enregistre les mots en commun de deux listes.
 * @param[in] liste1 : première liste du test.
 * @param[in] liste2 : seconde liste du test.
 * @param[out] liste_result : liste dans laquelle les mots en communs sont enregistrés.
@@ -83,14 +88,14 @@ void test_presence(Liste_mot& liste1, Liste_mot& liste2);
 void test_mots_communs(Liste_mot& liste1, Liste_mot& liste2, Liste_mot& liste_result);
 
 /** 
-* @brief : Affiche les mots en commun de deux listes.
+* @brief Affiche les mots en commun de deux listes.
 * @param[in] liste1 : première liste du test.
 * @param[in] liste2 : seconde liste du test.
 */
 void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2);
 
 /** 
-* @brief : Tri dans l'ordre lexicographique des mots d'une liste.
+* @brief Tri dans l'ordre lexicographique des mots d'une liste.
 * @param[in] liste : liste à trier.
 * @param[out] liste : liste triée.
 * @param[in] doublon : remplace les doublons par "NULL" si true.
@@ -100,7 +105,7 @@ void test_mots_communs_cout(Liste_mot& liste1, Liste_mot& liste2);
 void trie_n(Liste_mot& liste, bool doublon, bool ordre);
 
 /** 
-* @brief échange la position de deux éléments dans une liste de mots.
+* @brief Echange la position de deux éléments dans une liste de mots.
 * @param[in] liste : liste dans alquelle les éléments doivent être échangés.
 * @param[in] i : position du premier élément dans la liste.
 * @param[in] j : position du deuxième élément dans la liste.
