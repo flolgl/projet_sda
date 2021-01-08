@@ -133,7 +133,7 @@ bool sous_recherche(Mot& word, int pos, plateau& plate, coords& coord) {
 
 }
 
-bool verif_adjacence(plateau& plate, coords& coord, coords& coord_to_test) {
+bool verif_adjacence(coords& coord, coords& coord_to_test) {
     //if ( (coord_to_test.x < 0) | (coord_to_test.y < 0) | (coord_to_test.x >= plate.taille-1) | (coord_to_test.y >= plate.taille-1))
     //    return false;
     //if ((-1 <= coord.x - coord_to_test.x <= 1) && (-1 <= coord.y - coord_to_test.y <= 1))
