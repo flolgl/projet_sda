@@ -2,6 +2,7 @@
 #include "plateau.h"
 #include "trie.h"
 
+/*
 void initialiser_plateau(plateau& plateau_a_init, unsigned int taille){
     //std::cout << "la taille est de: " << taille << std::endl;
     plateau_a_init.lettre = new char*[taille];
@@ -31,7 +32,7 @@ void init_nil(plateau& plate) {
         }
     }
 }
-
+*/
 void init_false(plateau& plate) {
     for (unsigned int i = 0; i < plate.taille; i++) {
         for (unsigned int j = 0; j < plate.taille; j++) {
@@ -41,14 +42,32 @@ void init_false(plateau& plate) {
 }
 
 void get_plateau(plateau& plate) {
-    std::string word;
+  /*std::string word;
     std::cin >> std::ws;
     std::getline(std::cin, word);
     //std::cout << "la ligne: " << word << std::endl;  
-    ajouter_ligne_plateau(plate, word);
+    ajouter_ligne_plateau(plate, word);*/
+    char lettre;
+    coords coord = { 0,0 };
+
+    while (coord.x <= 3 && coord.y <= 3) {
+        std::cin >> lettre;
+
+        //std::cout << lettre << " aux coords: " << coord.y << coord.x << std::endl;
+        plate.lettre[coord.y][coord.x] = lettre;
+        plate.visitee[coord.y][coord.x] = false;
+        coord.x += 1;
+        if (coord.x == 4) {
+            coord.x = 0;
+            coord.y += 1;
+        }
+
+    }
+    plate.taille = 4;
+
 
 }
-
+/*
 void ajouter_ligne_plateau(plateau& plate, std::string& word) {
     unsigned int x = 0, y = 0;
 
@@ -84,7 +103,7 @@ void ajout_lignes_colonnes(plateau& plate){
     supprimer_plateau(plate);
     plate = new_plate;
 }
-
+*/
 bool recherche(plateau& plate, Mot& word) {
     coords coord;
     //std::cout << std::endl << std::endl << "Taille: " <<plate.taille << std::endl << std::endl;

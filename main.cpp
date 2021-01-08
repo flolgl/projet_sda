@@ -109,7 +109,7 @@ void sprint6(){
 	
 	// Initialisation en mémoire de la liste résultat et du plateau
 	initialiser_liste_mot(liste_result, 50);
-	initialiser_plateau(plate, 2);
+	//initialiser_plateau(plate, 2);
 	// Enregistrement des lettres du plateau
 	get_plateau(plate);
 	// Enregistrement de tous les mots trouvables dans le plateau dans la liste résultat
@@ -119,7 +119,7 @@ void sprint6(){
 	afficher(liste_result, false);
 	// Suppression et désallocation mémoire des listes
 	supprimer(liste_result);
-	supprimer_plateau(plate);
+	//supprimer_plateau(plate);
 }
 
 int main() {

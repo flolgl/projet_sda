@@ -4,8 +4,8 @@
 // Structure d'un plateau de lettres. Contient un tableau de pointeurs des lettres du plateau, un tableau de pointeurs de booléens
 // qui renseignent si la case lettre correspondante (en termes de coordonnées) a été visitée et la taille des lignes et colonnes du plateau.
 struct plateau {
-    char** lettre;
-    bool** visitee;
+    char lettre[4][4];
+    bool visitee[4][4];
     unsigned int taille;
 };
 
@@ -15,28 +15,12 @@ struct coords {
     unsigned int y;
 };
 
-/** brief : Initialisation en mémoire d'un plateau de lettres.
-* [in] plateau_a_init ! plateau de lettres qui doit être initialisée en mémoire.
-* [in] taille : taille des colonnes et lignes que le plateau devra contenir.
-* [out] plateau_a_init : plateau de lettres initialisé en mémoire.*/
-void initialiser_plateau(plateau& plateau_a_init, unsigned int taille);
-
-/** brief : Libération de l'espace mémoire d'un plateua de lettres.
-* [in] plateau_to_delete : plateau de mots dont l'espace mémoire doit être libébré.
-* [out] plateau_to_delete : plateau de mots dont l'espace mémoire a été libébré.*/
-void supprimer_plateau(plateau& plateau_to_delete);
-
-/** brief : Initialisation des tableaux d'un plateau
-* [out] plate : plateau à initialiser*/
-void init_nil(plateau& plate);
 
 /** brief : Attribution des lettres d'un plateau.
 * [in] plate : plateau dont les lettres doivent être initialisées.
 * [out] plate : plateau initialisée avec les lettres entrées.*/
 void get_plateau(plateau& plate);
 
-void ajouter_ligne_plateau(plateau& plate, std::string& word);
-void ajout_lignes_colonnes(plateau& plate);
 
 /** brief : Recherche d'un mot dans un plateau. Renvoie vrai si trouvé, faux sinon.
 * [in] plate : plateau dans lequel le mot doit être cherché.
